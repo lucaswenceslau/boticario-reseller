@@ -1,0 +1,86 @@
+{
+    "data": {
+      "items": [
+        {
+          "id": "ck6o6a8byxc7y09190xzaj8jz",
+          "title": "The Blend Eau de Parfum, 100ml",
+          "listPrice": 21590,
+          "bestPrice": 21590,
+          "description": "With the most precious ingredients and a commemorative packaging, Malbec Signature Eau de Parfum is an even more luxurious version. The fragrance in this Eau de Parfum is a masterpiece. The main ingredient is the Oud, originally from Asia and known as one of the most precious components of perfumery. The top of this amber woody olfactory pyramid also contains citrus notes of mandarian, bergamot and lemon, as well as aromatic notes, spices and cedar leaf. ",
+          "image": "https://res.cloudinary.com/hybear/image/upload/v1581805686/bp/t5x8v3txnlos011aonxd.webp"
+        },
+        {
+          "id": "ck6sakmf5l6db0939wib0i10d",
+          "title": "Malbec Signature Eau de Parfum, 90 ml",
+          "listPrice": 31500,
+          "bestPrice": 31500,
+          "description": "The bottle contains engraved symbols that mark the history of Malbec, born in Mendoza wineries in Argentina. The monogram links past and future and signs this special edition.",
+          "image": "https://res.cloudinary.com/hybear/image/upload/v1582054781/bp/sojcoktbhodg5uqubymh.jpg"
+        },
+        {
+          "id": "ck6sb33toq11m0960cdootlvb",
+          "title": "Make B. Creamy Lipstick, 3.6 g",
+          "listPrice": 5700,
+          "bestPrice": 5700,
+          "description": "Make B. Creamy Lipstick covers the lips with an intense color on the first application. ",
+          "image": "https://res.cloudinary.com/hybear/image/upload/v1582055146/bp/rbkind8iujzlzj1zu2uq.jpg"
+        },
+        {
+          "id": "ck6sb4agslahl0939j3dcpszt",
+          "title": "Make B. Matte Liquid Lipstick, 5 ml",
+          "listPrice": 6500,
+          "bestPrice": 6500,
+          "description": "Make B. Matte Liquid Lipstick gives color to the lips with a super comfortable texture and matte effect. ",
+          "image": "https://res.cloudinary.com/hybear/image/upload/v1582055699/bp/ongqrs2ekrprbneamx4c.jpg"
+        },
+        {
+          "id": "ck6sb5epeq1yu0960x9tqqove",
+          "title": "Make B. Metallic Lipstick, 3.6 g",
+          "listPrice": 6500,
+          "bestPrice": 6500,
+          "description": "Make B. Metallic Lipstick provides high lip pigmentation on first application, with a long lasting and even coverage.",
+          "image": "https://res.cloudinary.com/hybear/image/upload/v1582055752/bp/gc7mpfvyxqaqmr2ggpfm.jpg"
+        },
+        {
+          "id": "ck6sb8s4nlbd809391yatqum9",
+          "title": "Amor na Amora Deodorant Body Lotion 200ml",
+          "listPrice": 1799,
+          "bestPrice": 1799,
+          "description": "Amor na Amora deodorant moisturizing body lotion has a silky and velvety feel, glides easily on the skin and prevents dryness caused by the sun or wind.",
+          "image": "https://res.cloudinary.com/hybear/image/upload/v1582055910/bp/audm92zr7prnlpxurbbs.webp"
+        },
+        {
+          "id": "ck6sbaxwpq2vr0960c58buc6s",
+          "title": "Side Pink Deodorant Moisturizing Body Lotion 200ml",
+          "listPrice": 1799,
+          "bestPrice": 1799,
+          "description": "Side Pink deodorant moisturizing body lotion has a silky and velvety sensory, glides easily on the skin and prevents dryness caused by the sun or wind. It has a fruity floral fragrance that awakens optimism and makes you see the good in everything.\nDermatologically tested.",
+          "image": "https://res.cloudinary.com/hybear/image/upload/v1582055975/bp/llfvpjnovdxkpzk2c54u.webp"
+        },
+        {
+          "id": "ck6sbed4elc6q09394kpwdidj",
+          "title": "Cuide-se Bem Strawberries And Milk Moisturizing Body Lotion, 200 ml",
+          "listPrice": 2200,
+          "bestPrice": 2200,
+          "description": "Always have it on hand a lotion powerful with a delicate and delicious fragrance with Cuide-se Bem Body Lotion Strawberry and Milk.",
+          "image": "https://res.cloudinary.com/hybear/image/upload/v1582056158/bp/gkmpgbis6jfpj1qbcooe.jpg"
+        },
+        {
+          "id": "ck6sbf84zq3sd09601qkc8q5p",
+          "title": "Make B. Skin Nutridetox-C Overnight Cream, 2 x 15 g",
+          "listPrice": 12400,
+          "bestPrice": 12400,
+          "description": "Make B. Skin Nutridetox-C Overnight Cream features a unique Skin Adapt technology that adapts perfectly to all skin types. The product also has 3 different mechanisms for effective action against skin aging. ",
+          "image": "https://res.cloudinary.com/hybear/image/upload/v1582056210/bp/kzenl7tdxbuj7glkcase.jpg"
+        },
+        {
+          "id": "ck6sbg38slcmo0939bxuty9e8",
+          "title": "Make B. Skin Whitening Facial Cream, 30 g",
+          "listPrice": 10800,
+          "bestPrice": 10800,
+          "description": "Make B. Skin Whitening Facial Cream has an unique brightening complex that acts in a complete way, evening the tone of the skin and keeping it hydrated for up to 24 hours.",
+          "image": "https://res.cloudinary.com/hybear/image/upload/v1582056251/bp/d4cla7oqsotswgb6lt72.jpg"
+        }
+      ]
+    }
+  }

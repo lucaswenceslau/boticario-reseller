@@ -33,6 +33,11 @@ module.exports = {
         loaders: ['babel-loader'],
       },
       {
+        test: /\.js?$/,
+        exclude: /node_modules/,
+        loaders: ['babel-loader'],
+      },
+      {
         test: /\.scss$/,
         loader: 'style-loader!css-loader!sass-loader',
       },
