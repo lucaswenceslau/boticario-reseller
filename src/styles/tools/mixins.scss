@@ -1,0 +1,109 @@
+%center {
+  margin: 0 auto;
+}
+
+%flex-column{ 
+  display: flex;
+  flex-direction: column;
+} 
+
+%flex-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+%flex-spaced {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/// @param {Direction} $direction - Arrow direction, either `top` or `bottom` 
+/// @param {Color} $color [currentcolor] - Arrow color 
+/// @param {Length} $size - Arrow size
+@mixin arrow($direction, $color: currentcolor, $size: 0.5em) {
+  display: block;
+  @if not index(top bottom, $direction) {
+    @error "Direction must be either `top`, `right`, `bottom` or `left`.";
+  }
+  content: '';
+  width: $size;
+  height: $size;
+  border-top: 0.5px solid $color;
+  border-right: 0.5px solid $color;
+  position: absolute;
+  @if $direction == top {
+    transform: rotate(315deg);
+  } @else if $direction == bottom {
+    transform: rotate(135deg);
+  }
+}
+
+$z-index: (
+);
+
+@function z-index($key) {
+  @return map-get($z-index, $key);
+}
+
+@mixin z-index($key) {
+  z-index: z-index($key);
+}
+
+
+@function get-item($list, $current, $offset:0) {
+  $result-position: ($current + $offset) % length($list);
+  @if $result-position == 0 {
+      $result-position: length($list);
+  }
+  @return nth($list, $result-position);
+}
+
+@mixin arrow-generator($direction, $color, $size) {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  
+  $directions: top, right, bottom, left;
+  @for $i from 1 through length($directions) {
+      @if nth($directions, $i) == $direction {
+          border-#{get-item($directions, $i, -1)}: $size solid transparent; 
+          border-#{get-item($directions, $i, 1)}: $size solid transparent; 
+          border-#{get-item($directions, $i, 2)}: $size solid $color; 
+      } 
+  }
+}
+/// @param {Width} $width - width icon
+/// @param {Size} $size - size icon
+/// @param {color} $color - color icon
+
+@mixin icon-more($width, $size ,$color) {
+  &::after,
+  &::before{
+    content: '';
+    width: $width;
+    height: $size;
+    background-color: $color;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &::before{
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+}
+
+@mixin icon-less($width, $size, $color) {
+  &::after{
+    content: '';
+    width: $width;
+    height: $size;
+    background-color: $color;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

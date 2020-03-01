@@ -1,0 +1,29 @@
+
+.list-buy {
+    .container {
+      background-color: #fff;
+      width: 120rem;
+      padding: 5rem;
+    }
+    
+    .grid-table {
+      display: grid;
+      grid-auto-flow: column;
+      grid-template-rows:    repeat(7, auto);
+      grid-template-columns: repeat(3, auto);
+      
+      > div {
+        background-color: #fff;
+        border: 1px solid #f2f2f2;
+        padding: 1rem 2.5rem;
+        
+        &.--is-striped {
+          background-color: #f2f2f2;
+        }
+      }
+    }
+    .title {
+        text-align: center;
+        margin: 10px;
+    }
+}

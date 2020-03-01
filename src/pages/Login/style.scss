@@ -1,0 +1,43 @@
+.create {
+    color: var(--color-black);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url('../../assets/img/brunette.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        min-height: 500px;
+        height: fit-content;
+        padding: 15px;
+        border-radius: 20px;
+        width: 300px;
+        background-color: var(--color-white);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 1.5);
+        &-label {
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+            margin: 10px;
+        }
+    }
+    .input__general{
+        margin: 5px 0;
+    }
+    &__create-account {
+        margin-top: auto;
+        align-self: center;
+        &--create{
+            cursor: pointer;
+            font-weight: bold;
+        }
+    }
+    .button {
+        margin: 35px 0;
+    }
+}

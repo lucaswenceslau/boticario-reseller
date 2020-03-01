@@ -1,0 +1,45 @@
+.shelf-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    width: 300px;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px;
+    background-color: #fdfdfd;
+    text-align: center;
+    &__name{
+        margin: 10px;
+        font-weight: bold;
+        font-size: 18px;
+    }
+    &__image {
+        height: 50%;
+        width: 90%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+
+        img {
+            height: 100%;
+        }
+    }
+
+    &__description {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+        margin: 10px;
+    }
+    .button {
+        margin: 10px;
+    }
+    &:hover{
+        outline: 2px solid;
+        outline-color: var(--color-main);
+    }
+}

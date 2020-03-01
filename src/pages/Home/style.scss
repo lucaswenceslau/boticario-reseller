@@ -1,0 +1,16 @@
+.home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: url('../../assets/img/blonde.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    &__wrapper {
+        display: flex;
+        .button {
+            margin: 10px;
+        }
+    }
+}
