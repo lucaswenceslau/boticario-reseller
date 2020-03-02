@@ -1,16 +1,28 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { UserContext } from '../../context/userContext';
-import { Link, Redirect } from 'react-router-dom';
-import Input from '../../components/Input';
-import Button from '../../components/Button';
 import './style.scss';
 import Axios from 'axios';
 import Shelf from '../../components/Shelf';
-// import { Container } from './styles';
+// import { SellersContext } from '../../context/sellerContext';
+import { CurrentUserContext } from '../../context/userContext';
+import Loading from '../../components/Loading';
+
 
 const Buy = () => {
-    const [user, , login, setLogin] = useContext(UserContext);
+    const [currentUser, setCurrentUser] = useContext(CurrentUserContext);
     const [products, setProducts] = useState();
+    const [loading, setLoading] = useState(false);
+    const [textButton, setTextButton] = useState('Adicionar');
+
+    const handleAddProduct = (ev, product) => {
+        ev.preventDefault();
+        setCurrentUser(prevState => ({
+            ...prevState,
+            items: [...prevState.items, product]
+        }))
+    }
+
+    console.log(currentUser);
+
     const fetchData = async () => {
         const query = `
             query {
@@ -24,7 +36,6 @@ const Buy = () => {
                 }
             }
         `;
-
         const endpoint = "https://cgsy71zgc1.execute-api.eu-west-1.amazonaws.com/staging/";
 
         try {
@@ -32,6 +43,7 @@ const Buy = () => {
             const { data } = await response.data
             console.log("data: ", data.items)
             setProducts(data.items)
+            setLoading(true);
         }
         catch (err) {
             console.error("Error on Axios", err)
@@ -43,26 +55,29 @@ const Buy = () => {
     }, [])
     return (
         <>
+        
             <div className="shelve">
-                {
-                    /* {!login && (<Redirect to="/" />)} */
-                    products &&
-                    products.map(({ id, title, listPrice, bestPrice, description, image }) => {
-                        const formatPrice = (listPrice / 100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
-                        console.log(formatPrice)
-                        return <Shelf
-                            id={id}
-                            title={title}
-                            listPrice={listPrice}
-                            bestPrice={formatPrice}
-                            description={description}
-                            image={image}
-                            key={id}
-                        />
-                    })
-                }
+                {!loading ? (
+                    <Loading/>
+                ) : (
+                        products &&
+                        products.map((product, index) => {
+                            const { id, title, listPrice, bestPrice, description, image } = product;
+                            const formatPrice = (listPrice / 100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+                            return <Shelf
+                                id={id}
+                                title={title}
+                                listPrice={listPrice}
+                                bestPrice={formatPrice}
+                                description={description}
+                                image={image}
+                                content={textButton}
+                                key={id}
+                                onClick={ev => handleAddProduct(ev, product)}
+                            />
+                        })
+                    )}
             </div>
-
         </>
     )
 };

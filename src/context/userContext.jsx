@@ -1,29 +1,43 @@
 import React, {createContext, useState} from 'react';
 
 export const UserContext = createContext();
+export const CurrentUserContext = createContext();
 export const LoginContext = createContext();
 
-export const LoginProvider = () => {
-    // const [login, setLogin] = useState(false)
+export const LoginProvider = ({ children }) => {
+    const [login, setLogin] = useState(false);
     return (
-        <LoginContext.Provider value={[login, setLogin]}/>
+        <LoginContext.Provider value={[login, setLogin]}>
+            {children}
+        </LoginContext.Provider>
     )
 }
+
+export const CurrentUserProvider = ({ children }) => {
+    const [currentUser, setCurrentUser] = useState({
+        name: "",
+        email: "",
+        items: []
+    });
+    return (
+        <CurrentUserContext.Provider value={[currentUser, setCurrentUser]}>
+            {children}
+        </CurrentUserContext.Provider>
+    )
+}
+
 export const UserProvider = ({ children }) => {
     const [users, setUsers] = useState([{
-        name: "Lucas",
         email: "lucas@lucas.com",
-        password: "12345",
-        avatar: "",
-    }, {
-        email: "roreis99@gmail.com",
-         
+        password: "123"
     }])
-    const [login, setLogin] = useState(false)
     return (
-        <UserContext.Provider value={[users, setUsers, login, setLogin]}>
-            {/* <LoginProvider /> */}
-            {children}
+        <UserContext.Provider value={[users, setUsers]}>
+            <LoginProvider>
+                <CurrentUserProvider>
+                    {children}
+                </CurrentUserProvider>
+            </LoginProvider>
         </UserContext.Provider>
     );
 

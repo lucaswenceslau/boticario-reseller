@@ -1,20 +1,18 @@
 import React, { useContext, useState } from 'react';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
-import { UserContext } from '../../context/userContext';
+import { UserContext, LoginContext, CurrentUserContext } from '../../context/userContext';
 import './style.scss'
 import { Link, Redirect } from 'react-router-dom';
 
 
 const Login = () => {
-    
-    const [user,,login,setLogin] = useContext(UserContext);
+    const [login, setLogin] = useContext(LoginContext);
+    const [, setCurrentUser] = useContext(CurrentUserContext);
+    const [user] = useContext(UserContext);
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
 
-    console.log("user", user)
-    
-    console.log("loGin", login)
     const handleSubmit = (ev) => {
         ev.preventDefault();
         const userIndex = user.findIndex(test => test.email === email)
@@ -22,6 +20,10 @@ const Login = () => {
             if(user[userIndex].password === password){
                 alert('login ok')
                 setLogin(true);
+                setCurrentUser({
+                    name: user[userIndex].name,
+                    email: user[userIndex].email, items: []
+                })
             }
             else{
                 alert('senha incorreta')

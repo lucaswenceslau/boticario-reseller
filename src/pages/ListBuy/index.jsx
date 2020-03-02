@@ -1,61 +1,46 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './style.scss'
 import Title from '../../components/Title';
-// import { Container } from './styles';
+import { CurrentUserContext } from '../../context/userContext';
+import Button from '../../components/Button';
 
-const gridTableCells = document.querySelectorAll('.grid-table > div');
-
-gridTableCells.forEach((cell) => {
-    const orderNum = cell.getAttribute('order');
-    (orderNum % 2 !== 0) && (cell.className = '--is-striped');
-});
 const ListBuy = () => {
+    const [currentUser] = useContext(CurrentUserContext);
+
+    const { items } = currentUser;
     return (
         <div className="list-buy">
             <Title content="Suas vendas" />
-            <div class="container">
-                <div class="grid-table">
-                    <div order="1">Cod. Compra</div>
-                    <div order="2">CODIGO</div>
-                    <div order="3">CODIGO</div>
-                    <div order="4">CODIGO</div>
-                    <div order="5">CODIGO</div>
-                    <div order="6">CODIGO</div>
-                    <div order="7">CODIGO</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Cod. Compra</th>
+                        <th>Produto</th>
+                        <th>Nome</th>
+                        <th>Valor</th>
+                        <th>% Cashback</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {items &&
+                        items.map(({ bestPrice, image, title, id }, index) => (
 
-                    <div order="1">Product</div>
-                    <div order="2">PRODUTO</div>
-                    <div order="3">PRODUTO</div>
-                    <div order="4">PRODUTO</div>
-                    <div order="5">PRODUTO</div>
-                    <div order="6">PRODUTO</div>
-                    <div order="7">PRODUTO</div>
+                            <tr key={id}>
+                                <td>{index + 1}</td>
+                                <td><img src={image} alt="" /></td>
+                                <td>{title}</td>
+                                <td><strong>{(bestPrice / 100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></td>
+                                <td>(10%) {((bestPrice * 0.10) / 100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
+                                <td>Em validação</td>
+                                <td><Button content="X" /></td>
+                            </tr>
 
-                    <div order="1">Price</div>
-                    <div order="2">R$99.90</div>
-                    <div order="3">R$99.90</div>
-                    <div order="4">R$99.90</div>
-                    <div order="5">R$99.90</div>
-                    <div order="6">R$99.90</div>
-                    <div order="7">R$99.90</div>
-
-                    <div order="1">% Cashback</div>
-                    <div order="2">10%</div>
-                    <div order="3">10%</div>
-                    <div order="4">10%</div>
-                    <div order="5">10%</div>
-                    <div order="6">10%</div>
-                    <div order="7">10%</div>
-                    
-                    <div order="1">Status</div>
-                    <div order="2">“Em validação</div>
-                    <div order="3">“Em validação</div>
-                    <div order="4">“Em validação</div>
-                    <div order="5">“Em validação</div>
-                    <div order="6">“Em validação</div>
-                    <div order="7">“Em validação</div>
-                </div>
-            </div>
+                        ))
+                    }
+                </tbody>
+            </table>
         </div>
     )
 };

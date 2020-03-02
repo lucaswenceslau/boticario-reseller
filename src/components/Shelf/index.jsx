@@ -4,9 +4,9 @@ import './style.scss'
 import Button from '../Button';
 // import { Container } from './styles';
 
-const Shelf = ({id,image,title,description,listPrice,bestPrice}) => {
+const Shelf = ({id,image,title,description,listPrice,bestPrice, onClick, content}) => {
     return(
-        <div className="shelf-item">
+        <div className="shelf-item" >
             <Input type="hidden" value={id}/>
             <figure className="shelf-item__image">
                 <img src={image} alt={title} />
@@ -20,7 +20,7 @@ const Shelf = ({id,image,title,description,listPrice,bestPrice}) => {
             <p className="shelf-item__price">
                 {listPrice === bestPrice ? listPrice : bestPrice}
             </p>
-            <Button content="Adicionar"/>
+            <Button content={content} onClick={onClick}/>
         </div>
     )
 };

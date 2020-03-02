@@ -3,7 +3,7 @@ import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { UserContext } from '../../context/userContext'
 import './style.scss';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 const CreateAccount = () => {
     const [name, setName] = useState();
@@ -12,26 +12,23 @@ const CreateAccount = () => {
     const [password, setPassword] = useState();
     const [confirmPassword, setConfirmPassword] = useState();
 
-    const [users, setUsers] = useContext(UserContext);
+    const [, setUsers] = useContext(UserContext);
 
     const handleSubmit = (ev) => {
         ev.preventDefault();
         if (confirmPassword === password) {
-            setUsers(old => ({
-                ...old,
-                name,
+            setUsers(old => [...old, {
+                name, 
                 email,
-                cpf,
-                password
-            }))
+                password,
+                cpf
+            }])
+            
         }
-
-        console.log(users)
     }
     return (
         <div className="create">
             <span className="create__logo">
-                <Link to='/'> Back</Link>
                 <img src="" alt="" className="create__logo--img" />
             </span>
             <form className="create__form" onSubmit={ev => handleSubmit(ev)}>
@@ -40,6 +37,7 @@ const CreateAccount = () => {
                     <Input
                         type="name"
                         id="name"
+                        minlength="4"
                         placeholder="Fulano of Lorem"
                         onChange={ev => setName(ev.target.value)}
                     />
@@ -50,6 +48,8 @@ const CreateAccount = () => {
                     <Input
                         type="number"
                         id="cpf"
+                        minlength="11"
+                        maxlength="11"
                         placeholder="000.000.000-00"
                         onChange={ev => setCpf(ev.target.value)}
                     />
@@ -70,6 +70,8 @@ const CreateAccount = () => {
                     <Input
                         type="password"
                         id="password"
+                        minlength="8"
+                        maxlength="8"
                         placeholder="Type your password"
                         onChange={ev => setPassword(ev.target.value)}
                     />

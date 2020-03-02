@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, Router } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import CreateAccount from './pages/CreateAccount';
@@ -13,8 +13,8 @@ const Routes = () => (
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
         <Route path="/create" component={CreateAccount} />
-        <Route path="/buy" component={Buy} />
-        <Route path="/listbuy" component={ListBuy} />
+            <Route path="/listbuy" component={ListBuy} />
+            <Route path="/buy" component={Buy} />   
         <Route path="/account" component={MyAccount}/>
         <Route path="/dev" component={Dev} />
     </Switch>
