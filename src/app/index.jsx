@@ -5,15 +5,17 @@ import Header from '../components/Header';
 import '../styles/app.scss'
 import { UserProvider } from '../context/userContext';
 
-const App = () => (
-  <>
-    <BrowserRouter>
-      <UserProvider>
-        <Header />
-        <Routes />
-      </UserProvider>
-    </BrowserRouter>
-  </>
-);
+const App = () => {
+  return (
+    <>
+      <BrowserRouter>
+        <UserProvider>
+          <Header />
+          <Routes />
+        </UserProvider>
+      </BrowserRouter>
+    </>
+  )
+};
 
 export default App;

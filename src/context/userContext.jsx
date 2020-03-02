@@ -17,6 +17,7 @@ export const CurrentUserProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState({
         name: "",
         email: "",
+        password: "",
         items: []
     });
     return (
@@ -28,6 +29,7 @@ export const CurrentUserProvider = ({ children }) => {
 
 export const UserProvider = ({ children }) => {
     const [users, setUsers] = useState([{
+        name: "Lucas",
         email: "lucas@lucas.com",
         password: "123"
     }])

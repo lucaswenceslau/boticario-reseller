@@ -9,13 +9,13 @@ import MyAccount from './pages/MyAccount';
 import Dev from './pages/Dev';
 
 const Routes = () => (
-    <Switch>
+    <Switch >
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
         <Route path="/create" component={CreateAccount} />
-            <Route path="/listbuy" component={ListBuy} />
-            <Route path="/buy" component={Buy} />   
-        <Route path="/account" component={MyAccount}/>
+        <Route path="/listbuy" component={ListBuy} />
+        <Route path="/buy" component={Buy} />
+        <Route path="/account" component={MyAccount} />
         <Route path="/dev" component={Dev} />
     </Switch>
 );

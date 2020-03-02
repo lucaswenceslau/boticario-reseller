@@ -23,7 +23,7 @@ const CreateAccount = () => {
                 password,
                 cpf
             }])
-            
+            alert("Usuário criado com sucesso!")
         }
     }
     return (
@@ -48,8 +48,8 @@ const CreateAccount = () => {
                     <Input
                         type="number"
                         id="cpf"
-                        minlength="11"
-                        maxlength="11"
+                        minLength="11"
+                        maxLength="11"
                         placeholder="000.000.000-00"
                         onChange={ev => setCpf(ev.target.value)}
                     />
@@ -70,8 +70,8 @@ const CreateAccount = () => {
                     <Input
                         type="password"
                         id="password"
-                        minlength="8"
-                        maxlength="8"
+                        minLength="8"
+                        maxLength="8"
                         placeholder="Type your password"
                         onChange={ev => setPassword(ev.target.value)}
                     />

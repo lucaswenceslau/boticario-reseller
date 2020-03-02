@@ -2,12 +2,12 @@ import React, { useContext, useEffect, useState } from 'react';
 import './style.scss';
 import Axios from 'axios';
 import Shelf from '../../components/Shelf';
-// import { SellersContext } from '../../context/sellerContext';
-import { CurrentUserContext } from '../../context/userContext';
+import { CurrentUserContext, LoginContext } from '../../context/userContext';
 import Loading from '../../components/Loading';
-
+import { Redirect } from 'react-router-dom';
 
 const Buy = () => {
+    const [login] = useContext(LoginContext);
     const [currentUser, setCurrentUser] = useContext(CurrentUserContext);
     const [products, setProducts] = useState();
     const [loading, setLoading] = useState(false);
@@ -21,7 +21,6 @@ const Buy = () => {
         }))
     }
 
-    console.log(currentUser);
 
     const fetchData = async () => {
         const query = `
@@ -41,12 +40,11 @@ const Buy = () => {
         try {
             const response = await Axios.post(endpoint, { query });
             const { data } = await response.data
-            console.log("data: ", data.items)
             setProducts(data.items)
             setLoading(true);
         }
         catch (err) {
-            console.error("Error on Axios", err)
+            console.error("Error on Axios Request", err)
         }
 
     }
@@ -55,29 +53,33 @@ const Buy = () => {
     }, [])
     return (
         <>
-        
-            <div className="shelve">
-                {!loading ? (
-                    <Loading/>
-                ) : (
-                        products &&
-                        products.map((product, index) => {
-                            const { id, title, listPrice, bestPrice, description, image } = product;
-                            const formatPrice = (listPrice / 100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
-                            return <Shelf
-                                id={id}
-                                title={title}
-                                listPrice={listPrice}
-                                bestPrice={formatPrice}
-                                description={description}
-                                image={image}
-                                content={textButton}
-                                key={id}
-                                onClick={ev => handleAddProduct(ev, product)}
-                            />
-                        })
-                    )}
-            </div>
+            {login ? (
+                <div className="shelve">
+                    {!loading ? (
+                        <Loading />
+                    ) : (
+                            products &&
+                            products.map((product, index) => {
+                                const { id, title, listPrice, bestPrice, description, image } = product;
+                                const formatPrice = (bestPrice / 100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+                                return <Shelf
+                                    id={id}
+                                    title={title}
+                                    listPrice={listPrice}
+                                    bestPrice={formatPrice}
+                                    description={description}
+                                    image={image}
+                                    content={textButton}
+                                    key={id}
+                                    onClick={ev => handleAddProduct(ev, product)}
+                                />
+                            })
+                        )}
+                </div>
+            ) :
+                <Redirect to="/" />
+            }
+
         </>
     )
 };

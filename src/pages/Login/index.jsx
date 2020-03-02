@@ -18,7 +18,6 @@ const Login = () => {
         const userIndex = user.findIndex(test => test.email === email)
         if(userIndex !== -1) {
             if(user[userIndex].password === password){
-                alert('login ok')
                 setLogin(true);
                 setCurrentUser({
                     name: user[userIndex].name,

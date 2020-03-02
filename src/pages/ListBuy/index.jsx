@@ -1,15 +1,18 @@
 import React, { useContext } from 'react';
 import './style.scss'
 import Title from '../../components/Title';
-import { CurrentUserContext } from '../../context/userContext';
+import { CurrentUserContext, LoginContext } from '../../context/userContext';
 import Button from '../../components/Button';
+import { Redirect } from 'react-router-dom';
 
 const ListBuy = () => {
     const [currentUser] = useContext(CurrentUserContext);
-
+    const [login] = useContext(LoginContext);
     const { items } = currentUser;
     return (
-        <div className="list-buy">
+        <>
+        {login ? (
+            <div className="list-buy">
             <Title content="Suas vendas" />
             <table>
                 <thead>
@@ -20,7 +23,6 @@ const ListBuy = () => {
                         <th>Valor</th>
                         <th>% Cashback</th>
                         <th>Status</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,8 +35,7 @@ const ListBuy = () => {
                                 <td>{title}</td>
                                 <td><strong>{(bestPrice / 100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</strong></td>
                                 <td>(10%) {((bestPrice * 0.10) / 100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</td>
-                                <td>Em validação</td>
-                                <td><Button content="X" /></td>
+                                <td>Concluído</td>
                             </tr>
 
                         ))
@@ -42,6 +43,12 @@ const ListBuy = () => {
                 </tbody>
             </table>
         </div>
+        ) : <Redirect to="/"/>
+        
+        
+        }
+        </>
+        
     )
 };
 

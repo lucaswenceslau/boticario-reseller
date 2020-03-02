@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { LoginContext } from '../../context/userContext';
 import Logo from '../../assets/img/logo.png'
@@ -7,18 +7,22 @@ import './style.scss'
 
 
 const Header = () => {
-    const [login, setLogin] = useContext(LoginContext)
-    // console.log(LoginContext)
-    const handleLogout = () => setLogin(false)
-    return (
+    const [login, setLogin] = useContext(LoginContext);
+    const handleLogout = () => setLogin(false);
+    const [header, setHeader] = useState(false);
 
+    return (
         <header className="header">
             <Link to='/'>
                 <span className="header__logo">
                     <img src={Logo} alt="Logo Revendedora Boticário" />
                 </span>
             </Link>
-            <div className="header__items">
+            <span className="header__menu" onClick={() => setHeader(!header)}>
+                
+            </span>
+            <div className={`header__items set--${header}`} >
+                <span className="header__items-close" onClick={() => setHeader(!header)}>X</span>
                 {login ? (
                     <>
                     <Link to="/" className="header__items-link">Home</Link>
@@ -36,7 +40,9 @@ const Header = () => {
             <div className="header__account">
                 {
                     login ? (
-                        <Button content="Logout" onClick={handleLogout} />
+                        <Link to="/login">
+                            <Button content="Logout" onClick={handleLogout} />
+                        </Link>
                     )
                         : (
                             <Link to='/login'>

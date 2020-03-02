@@ -1,3 +1,13 @@
+@mixin device($width, $type: max) {
+    @if $type==max {
+        @media only screen and (#{$type}-width: $width) {
+            @content;
+        }
+    }
+}
+
+$breakpoint: 768px;
+
 .header {
     width: 100%;
     height: 80px;
@@ -7,33 +17,106 @@
     background: var(--color-blue);
     display: flex;
     align-items: center;
-    box-shadow: 0 1px 2px rgba(0,0,0,.1);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
     z-index: 1;
-    &__logo{
-        
+
+    &__logo {}
+
+    &__menu {
+        @include device(500px) {
+            display: block;
+            width: 50px;
+            height: 5px;
+            position: relative;
+            background: white;
+            border-radius: 10px;
+
+            &:after {
+                content: '';
+                position: absolute;
+                display: block;
+                width: inherit;
+                height: inherit;
+                background: white;
+                border-radius: 10px;
+                top: 10px;
+            }
+
+            &:before {
+                content: '';
+                position: absolute;
+                display: block;
+                width: inherit;
+                height: inherit;
+                background: white;
+                border-radius: 10px;
+                top: -10px;
+            }
+
+        }
     }
-    
-    &__items{
+
+    img {
+        @include device(500px) {
+            display: none;
+        }
+    }
+
+    &__items {
         display: flex;
         justify-content: space-around;
         align-items: center;
         width: 100%;
-        &-link{
+        transition: .3s ease-in-out;
+
+        &-link {
             color: white;
             padding: 15px;
-            .button{
+
+            .button {
                 background: var(--color-darker);
                 border: 2px solid var(--color-white);
                 align-self: flex-end;
             }
         }
+
+        @include device(425px) {
+            position: absolute;
+            background: var(--color-blue);
+            flex-direction: column;
+            left: 0;
+            top: 0;
+
+            &.set--true {
+                transform: translateY(-100%);
+            }
+        }
+
+        &-close {
+            display: none;
+            @include device($breakpoint) {
+                display: block;
+            }
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+            padding: 10px;
+            color: var(--color-white);
+
+        }
     }
-    
-    &__account{
+
+    &__account {
         margin-left: auto;
     }
+
     .button {
         width: 130px;
+
+        @include device($breakpoint) {
+            width: fit-content;
+        }
+
         &.especial {
             background: red;
         }

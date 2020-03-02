@@ -20,7 +20,7 @@ const Home = () => {
                 {
                     login ? (
                         <Link to="/buy">
-                            <Button content="Cadastrar Compras" />
+                            <Button content="Cadastrar Vendas" />
                         </Link>
                     ) : (
                             <>
